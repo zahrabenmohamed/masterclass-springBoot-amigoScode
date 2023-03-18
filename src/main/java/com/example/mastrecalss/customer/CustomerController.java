@@ -1,8 +1,7 @@
 package com.example.mastrecalss.customer;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,6 +18,23 @@ public class CustomerController {
     List<Customer> getCustomer(){
         return  customerService.getCustomers();
 
+    }
+
+    @PostMapping
+    void createNewCustomer(@RequestBody Customer customer){
+        System.out.println(customer);
+        System.out.println("new post ...");
+    }
+
+    @DeleteMapping(path = "{customerId}")
+    void deleteCustomer(@PathVariable("customerId")Long id){
+        System.out.println("Delete request a customer by id" + id);
+    }
+
+    @PutMapping
+    void updateCustomer(@RequestBody Customer customer ){
+        System.out.println(" PUT request a customer");
+        System.out.println(customer);
     }
 
 }

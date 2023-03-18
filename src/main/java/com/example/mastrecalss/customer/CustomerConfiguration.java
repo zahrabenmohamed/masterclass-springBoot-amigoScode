@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 public class CustomerConfiguration {
 
 
-    @Value("${app.FakeRepoUse:True}")
+    @Value("${app.FakeRepoUse:False}")
     private Boolean FakeRepoUse;
 
 
