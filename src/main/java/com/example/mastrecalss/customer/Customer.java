@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotBlank;
+
 
 @Data
 @AllArgsConstructor
@@ -13,8 +15,12 @@ public class Customer {
 
     @JsonProperty("customerId")
     private final Long id;
+    @NotBlank
     private final String name;
 
+    @NotBlank
     @JsonProperty(access= JsonProperty.Access.WRITE_ONLY)
     private final String password;
+
+    private final String email;
 }
