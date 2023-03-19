@@ -1,7 +1,5 @@
 package com.example.mastrecalss.customer;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+import com.example.mastrecalss.exception.NotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,6 +17,15 @@ public class CustomerService {
 
     List<Customer> getCustomers(){
         return customerRepo.getCustomers();
+    }
+
+    Customer getCustomerById(Long id){
+        return getCustomers()
+                .stream().
+                filter(c->c.getId().equals(id))
+                .findFirst()
+                .orElseThrow(()->new NotFoundException("customer not found with id " +id));
+
     }
 
 }
